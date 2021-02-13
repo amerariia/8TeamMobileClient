@@ -73,6 +73,6 @@
         android:text="@string/register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordConfirmEditText" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordConfirmEditText_Register" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
