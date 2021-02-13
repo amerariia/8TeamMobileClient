@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">8TeamMobileClient</string>
+    <string name="login">Логін</string>
+    <string name="name">Прізвище та Ім\'я</string>
+    <string name="password">Пароль</string>
+    <string name="passwordConfirm">Підтвердження пароля</string>
+    <string name="register">Реєстрація</string>
+    <string name="enter">Увійти</string>
 </resources>
