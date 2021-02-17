@@ -58,7 +58,6 @@
         android:layout_marginEnd="20dp"
         android:hint="@string/passwordConfirm"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/registerButton_Register"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditText_Register" />
@@ -68,11 +67,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="50dp"
         android:layout_marginEnd="100dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/register"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordConfirmEditText_Register" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
