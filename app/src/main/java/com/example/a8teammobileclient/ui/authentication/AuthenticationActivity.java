@@ -1,12 +1,8 @@
-package com.example.a8teammobileclient.authentication;
+package com.example.a8teammobileclient.ui.authentication;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.a8teammobileclient.R;
 
@@ -16,6 +12,11 @@ public class AuthenticationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_authentication);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         setLoginFragment();
     }
 

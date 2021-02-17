@@ -1,4 +1,4 @@
-package com.example.a8teammobileclient;
+package com.example.a8teammobileclient.ui.authentication;
 
 import android.content.Context;
 import android.content.SharedPreferences;

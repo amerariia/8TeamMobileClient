@@ -1,17 +1,13 @@
-package com.example.a8teammobileclient.authentication;
+package com.example.a8teammobileclient.ui.authentication;
 
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputType;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,12 +15,6 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.a8teammobileclient.R;
-
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Optional;
-
-import static com.example.a8teammobileclient.validator.AuthenticationValidator.*;
 
 public class RegistrationFragment extends Fragment {
 

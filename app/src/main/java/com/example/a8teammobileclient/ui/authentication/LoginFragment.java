@@ -1,4 +1,4 @@
-package com.example.a8teammobileclient.authentication;
+package com.example.a8teammobileclient.ui.authentication;
 
 import android.os.Build;
 import android.os.Bundle;
