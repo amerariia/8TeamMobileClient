@@ -13,6 +13,6 @@ public class Group {
     Group parentGroup;
     List<User> pupils;
     List<User> teachers;
-    List<Task> tasks; //Posts
+    List<Post> posts; //Posts
     List<String> usefulLinks;
 }

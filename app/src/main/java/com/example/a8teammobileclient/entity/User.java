@@ -7,9 +7,10 @@ import lombok.Setter;
 @Setter
 @Getter
 public class User {
-    Integer id;
+    String id;
     String name;
     String login;
+    String email;
     String password;
     Role role;
     List<Group> groups;

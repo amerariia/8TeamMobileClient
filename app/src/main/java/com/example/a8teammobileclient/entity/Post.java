@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Task {
+public class Post {
     Integer id;
     String caption;
     String description;

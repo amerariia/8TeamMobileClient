@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Content {
+public class FormContent {
     String header;
     List<Question> questions;
 }

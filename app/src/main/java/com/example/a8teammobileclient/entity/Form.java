@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 public class Form {
     Integer id;
-    Task task;
-    Content content;
+    Post post;
+    FormContent formContent;
     List<User> users;
 }

@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 public class Comment {
     String text;
-    Task task;
+    Post post;
     User sender;
 }
