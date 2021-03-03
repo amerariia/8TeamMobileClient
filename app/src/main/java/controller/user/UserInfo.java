@@ -1,19 +1,25 @@
 package controller.user;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
 import com.example.a8teammobileclient.entity.User;
+import com.example.a8teammobileclient.ui.authentication.LoginFragment;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserInfo implements Callback<User> {
-    private final AppCompatActivity activity;
-    public UserInfo(AppCompatActivity activity){
-        this.activity = activity;
+    private final Fragment fragment;
+    public UserInfo(Fragment fragment){
+        this.fragment = fragment;
     }
     @Override
     public void onResponse(Call<User> call, Response<User> response) {
-
+        if(response.isSuccessful()){
+            ((LoginFragment)fragment).userInfo(response.body());
+        }
     }
 
     @Override
