@@ -1,16 +1,9 @@
 package com.example.a8teammobileclient.service;
 
-import com.example.a8teammobileclient.entity.Form;
 import lombok.Getter;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import java.util.List;
-
-// TODO create services objects
 @Getter
 public class RetrofitConfig {
     private static final String BASE_URL = "https://grouper-8team-api.herokuapp.com/api";
@@ -39,21 +32,5 @@ public class RetrofitConfig {
         postService = retrofit.create(PostService.class);
         userService = retrofit.create(UserService.class);
 
-    }
-
-    public FormService getFormService() {
-        return formService;
-    }
-
-    public GroupService getGroupService() {
-        return groupService;
-    }
-
-    public PostService getPostService() {
-        return postService;
-    }
-
-    public UserService getUserService() {
-        return userService;
     }
 }
