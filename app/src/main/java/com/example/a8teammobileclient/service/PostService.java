@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface PostService {
     @POST("Post")
-    Call<ResponseBody> create();
+    Call<Post> create();
 
     @GET("Post")
     Call<List<Post>> get();
@@ -21,7 +21,7 @@ public interface PostService {
     Call<ResponseBody> delete(@Path("id") Integer id);
 
     @PUT("Post/{id}")
-    Call<ResponseBody> modify(@Path("id") Integer id);
+    Call<Post> modify(@Path("id") Integer id);
 
     @POST("Post/{postId}/add-comment")
     Call<ResponseBody> addComment(@Path("pathId") Integer id);

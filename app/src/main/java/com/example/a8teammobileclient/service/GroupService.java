@@ -12,7 +12,7 @@ public interface GroupService {
     Call<List<Group>> get();
 
     @POST("Group")
-    Call<ResponseBody> create();
+    Call<Group> create();
 
     @GET("Group/{id}")
     Call<Group> get(@Path("id") Integer id);
@@ -21,7 +21,7 @@ public interface GroupService {
     Call<ResponseBody> delete(@Path("id") Integer id);
 
     @PUT("Group/{id}")
-    Call<ResponseBody> modify(@Path("id") Integer id);
+    Call<Group> modify(@Path("id") Integer id);
 
     @POST("Group/{groupId}/add-user")
     Call<ResponseBody> addUser(@Path("groupId") Integer id);

@@ -16,11 +16,11 @@ public interface FormService {
     Call<ResponseBody> delete(@Path("id") Integer id);
 
     @PUT("Form/{id]")
-    Call<ResponseBody> modify(@Path("id") Integer id);
+    Call<Form> modify(@Path("id") Integer id);
 
     @GET("Form")
     Call<List<Form>> get();
 
     @POST("Form")
-    void create(Form form);
+    Call<Form> create(Form form);
 }
