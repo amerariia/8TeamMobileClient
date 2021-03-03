@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Getter
 public class RetrofitConfig {
-    private static final String BASE_URL = "https://grouper-8team-api.herokuapp.com/api";
+    private static final String BASE_URL = "https://grouper-8team-api.herokuapp.com/api/";
     private static RetrofitConfig config;
 
     private FormService formService;
