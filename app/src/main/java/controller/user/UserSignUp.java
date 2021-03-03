@@ -1,6 +1,7 @@
 package controller.user;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.example.a8teammobileclient.entity.ResponseModel;
 
@@ -10,9 +11,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserSignUp implements Callback<ResponseModel> {
-    private final AppCompatActivity activity;
-    public UserSignUp(AppCompatActivity activity){
-        this.activity = activity;
+    private final Fragment fragment;
+    public UserSignUp(Fragment fragment){
+        this.fragment = fragment;
     }
     @Override
     public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
