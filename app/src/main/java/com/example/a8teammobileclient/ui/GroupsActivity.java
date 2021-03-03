@@ -15,18 +15,22 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.a8teammobileclient.R;
 import com.example.a8teammobileclient.entity.Group;
+import com.example.a8teammobileclient.service.RetrofitConfig;
 import com.example.a8teammobileclient.testData;
 import com.example.a8teammobileclient.ui.authentication.AuthenticationActivity;
 import com.example.a8teammobileclient.ui.authentication.SharedPreferencesHelper;
 
 import java.util.List;
 
+import controller.group.GroupGetAll;
+
 public class GroupsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
-        addGroupsToActivity(loadGroups());
+        RetrofitConfig.get().getGroupService().get().enqueue(new GroupGetAll(this));
+        //addGroupsToActivity(loadGroups());
 
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);

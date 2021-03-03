@@ -2,6 +2,8 @@ package controller.group;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.a8teammobileclient.entity.Group;
+import com.example.a8teammobileclient.ui.GroupsActivity;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -15,7 +17,9 @@ public class GroupGetAll implements Callback<List<Group>> {
     }
     @Override
     public void onResponse(Call<List<Group>> call, Response<List<Group>> response) {
-
+        if(response.isSuccessful()) {
+            ((GroupsActivity) activity).addGroupsToActivity(response.body());
+        }
     }
 
     @Override

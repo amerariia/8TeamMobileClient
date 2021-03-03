@@ -1,6 +1,7 @@
 package com.example.a8teammobileclient.service;
 
 import com.example.a8teammobileclient.entity.Form;
+import com.example.a8teammobileclient.entity.ResponseModel;
 
 import java.util.List;
 
@@ -15,12 +16,12 @@ public interface FormService {
     @DELETE("Form/{id}")
     Call<ResponseBody> delete(@Path("id") Integer id);
 
-    @PUT("Form/{id]")
-    Call<Form> modify(@Path("id") Integer id);
+    @PUT("Form")
+    Call<ResponseModel> modify(@Body Form form);
 
     @GET("Form")
     Call<List<Form>> get();
 
     @POST("Form")
-    Call<Form> create(Form form);
+    Call<ResponseModel> create(@Body Form form);
 }

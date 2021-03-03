@@ -1,6 +1,8 @@
 package com.example.a8teammobileclient.service;
 
 import com.example.a8teammobileclient.entity.Post;
+import com.example.a8teammobileclient.entity.ResponseModel;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -9,7 +11,7 @@ import java.util.List;
 
 public interface PostService {
     @POST("Post")
-    Call<Post> create();
+    Call<ResponseModel> create(@Body Post post);
 
     @GET("Post")
     Call<List<Post>> get();
@@ -18,11 +20,11 @@ public interface PostService {
     Call<Post> get(@Path("id") Integer id);
 
     @DELETE("Post/{id}")
-    Call<ResponseBody> delete(@Path("id") Integer id);
+    Call<ResponseModel> delete(@Path("id") Integer id);
 
-    @PUT("Post/{id}")
-    Call<Post> modify(@Path("id") Integer id);
+    @PUT("Post")
+    Call<ResponseModel> modify(@Body Post post);
 
-    @POST("Post/{postId}/add-comment")
-    Call<ResponseBody> addComment(@Path("pathId") Integer id);
+    @POST("Post/add-comment")
+    Call<ResponseModel> addComment(@Body Post post);
 }
