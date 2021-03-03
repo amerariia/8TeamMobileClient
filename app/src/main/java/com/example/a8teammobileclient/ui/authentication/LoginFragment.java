@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,10 +17,15 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.a8teammobileclient.R;
+import com.example.a8teammobileclient.entity.User;
+import com.example.a8teammobileclient.service.RetrofitConfig;
 import com.example.a8teammobileclient.testData;
 import com.example.a8teammobileclient.ui.GroupsActivity;
 
 import java.util.Optional;
+
+import controller.user.UserInfo;
+import controller.user.UserSignIn;
 
 public class LoginFragment extends Fragment {
     private Button registerBtn, loginBtn;
@@ -61,17 +67,32 @@ public class LoginFragment extends Fragment {
                 v -> {
                     String login = loginET.getText().toString();
                     String password = passwordET.getText().toString();
-                    if(testData.users.stream()
-                            .anyMatch(user -> user.getLogin().equals(login) && user.getPassword().equals(password))){
-                        ((AuthenticationActivity) getActivity()).openGroupsActivity();
 
-                    }
-                    else{
-                        errorTV.setText("Невірний логін або пароль. \nЯкщо ви не зареєстровані - зареєструйтесь :)");
-                    }
+                    RetrofitConfig.get()
+                            .getUserService().signIn(
+                                    User.builder().login(login).password(password).build()
+                            ).enqueue(new UserSignIn(this));
+//                    if(testData.users.stream()
+//                            .anyMatch(user -> user.getLogin().equals(login) && user.getPassword().equals(password))){
+//                        ((AuthenticationActivity) getActivity()).openGroupsActivity();
+//
+//                    }
+//                    else{
+//                        errorTV.setText("Невірний логін або пароль. \nЯкщо ви не зареєстровані - зареєструйтесь :)");
+//                    }
                 }
         );
 
         // buttons, views initialization
     }
+
+    public void loginSuccess(){
+        //((AuthenticationActivity) getActivity()).openGroupsActivity();
+        RetrofitConfig.get().getUserService().info().enqueue(new UserInfo(this));
+    }
+
+    public void userInfo(User user){
+        Toast.makeText(getContext(), user.getName(), Toast.LENGTH_SHORT).show();
+    }
+
 }
