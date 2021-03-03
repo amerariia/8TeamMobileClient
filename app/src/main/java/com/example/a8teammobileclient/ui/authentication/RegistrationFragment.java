@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,11 +16,17 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.a8teammobileclient.R;
+import com.example.a8teammobileclient.entity.User;
+import com.example.a8teammobileclient.testData;
+import com.example.a8teammobileclient.validator.AuthenticationValidator;
+
+import java.util.Optional;
 
 public class RegistrationFragment extends Fragment {
 
-    private EditText loginET, nameET, passwordET, confirmPasswordET;
-    private Button loginB, registerB;
+    private EditText loginET, emailET, nameET, passwordET, confirmPasswordET;
+    private Button loginBtn, registerBtn;
+    private TextView errorTV;
     public static RegistrationFragment newInstance() {
         return new RegistrationFragment();
     }
@@ -41,13 +48,49 @@ public class RegistrationFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         loginET = view.findViewById(R.id.loginEditText_Register);
+        emailET = view.findViewById(R.id.emailEditText_Register);
         nameET = view.findViewById(R.id.nameEditText_Register);
         passwordET = view.findViewById(R.id.passwordEditText_Register);
         confirmPasswordET = view.findViewById(R.id.passwordConfirmEditText_Register);
-        loginB = view.findViewById(R.id.loginButton_Register);
-        registerB = view.findViewById(R.id.registerButton_Register);
+
+        errorTV = view.findViewById(R.id.errorTextView_Register);
+
+        loginBtn = view.findViewById(R.id.loginButton_Register);
+        registerBtn = view.findViewById(R.id.registerButton_Register);
 
         loginET. setInputType(InputType. TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_CLASS_TEXT);
+        emailET. setInputType(InputType. TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_CLASS_TEXT);
+        nameET. setInputType(InputType. TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_CLASS_TEXT);
+        passwordET. setInputType(InputType. TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_CLASS_TEXT);
+        confirmPasswordET. setInputType(InputType. TYPE_TEXT_FLAG_NO_SUGGESTIONS| InputType.TYPE_CLASS_TEXT);
+
+        loginBtn.setOnClickListener(
+                v -> Optional.ofNullable((AuthenticationActivity) getActivity())
+                        .ifPresent(AuthenticationActivity::setLoginFragment)
+        );
+
+        registerBtn.setOnClickListener(
+                v -> {
+
+                    try{
+                        AuthenticationValidator.validateLogin(loginET.getText().toString());
+                        AuthenticationValidator.validateName(nameET.getText().toString());
+                        AuthenticationValidator.validatePassword(passwordET.getText().toString());
+                        AuthenticationValidator.validateEmail(emailET.getText().toString());
+                        AuthenticationValidator.confirmPasswords(passwordET.getText().toString(), confirmPasswordET.getText().toString());
+                    }catch(RuntimeException e){
+                        errorTV.setText(e.getMessage());
+                    }
+                    User user = User.builder()
+                            .login(loginET.getText().toString())
+                            .email(emailET.getText().toString())
+                            .name(nameET.getText().toString())
+                            .password(passwordET.getText().toString())
+                            .build();
+                    testData.users.add(user);
+                }
+        );
+
 //
 //        loginET.addTextChangedListener(new TextWatcher() {
 //            @Override

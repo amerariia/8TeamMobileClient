@@ -16,10 +16,18 @@ public class SharedPreferencesHelper {
     public static final Type USER_TYPE = new TypeToken<User>(){}.getType();
 
     private SharedPreferences sharedPreferences;
+    private static SharedPreferencesHelper sharedPreferencesHelper;
     private Gson mGson = new Gson();
 
-    public SharedPreferencesHelper(Context context){
+    private SharedPreferencesHelper(Context context){
         sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+    }
+
+    public static SharedPreferencesHelper getInstance(Context context){
+        if(sharedPreferencesHelper == null){
+            sharedPreferencesHelper = new SharedPreferencesHelper(context);
+        }
+        return sharedPreferencesHelper;
     }
 
     public User getUser(){
@@ -31,5 +39,9 @@ public class SharedPreferencesHelper {
         if(!(user.getLogin().equals(newUser.getLogin()))){
             sharedPreferences.edit().putString(LOGGED_USER, mGson.toJson(newUser, USER_TYPE)).apply();
         }
+    }
+
+    public void deleteUser(){
+        sharedPreferences.edit().remove(LOGGED_USER);
     }
 }
