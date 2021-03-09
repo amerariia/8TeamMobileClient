@@ -1,5 +1,8 @@
 package com.example.a8teammobileclient.entity;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 import lombok.Builder;
@@ -10,11 +13,27 @@ import lombok.Setter;
 @Getter
 @Builder
 public class Group {
+    @SerializedName("id")
+    @Expose
     Integer id;
+
+    @SerializedName("name")
+    @Expose
     String name;
-    Group parentGroup;
-    List<User> pupils;
-    List<User> teachers;
-    List<Post> posts; //Posts
+
+    @SerializedName("childGroups")
+    @Expose
+    List<Group> childGroups;
+
+    @SerializedName("participants")
+    @Expose
+    List<User> participants;
+
+    @SerializedName("tasks")
+    @Expose
+    List<Post> tasks;
+
+    @SerializedName("usefulLinks")
+    @Expose
     List<String> usefulLinks;
 }
