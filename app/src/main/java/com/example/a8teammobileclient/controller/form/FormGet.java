@@ -1,12 +1,10 @@
-package controller.form;
+package com.example.a8teammobileclient.controller.form;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.a8teammobileclient.entity.Form;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import java.util.List;
 
 public class FormGet implements Callback<Form> {
     private final AppCompatActivity activity;

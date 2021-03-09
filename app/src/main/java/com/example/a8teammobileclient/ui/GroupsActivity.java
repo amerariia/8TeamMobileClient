@@ -11,18 +11,16 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import com.example.a8teammobileclient.R;
 import com.example.a8teammobileclient.entity.Group;
 import com.example.a8teammobileclient.service.RetrofitConfig;
 import com.example.a8teammobileclient.testData;
 import com.example.a8teammobileclient.ui.authentication.AuthenticationActivity;
-import com.example.a8teammobileclient.ui.authentication.SharedPreferencesHelper;
 
 import java.util.List;
 
-import controller.group.GroupGetAll;
+import com.example.a8teammobileclient.controller.group.GroupGetAll;
 
 public class GroupsActivity extends AppCompatActivity {
     @Override

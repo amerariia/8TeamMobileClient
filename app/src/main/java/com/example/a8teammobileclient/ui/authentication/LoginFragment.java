@@ -22,8 +22,7 @@ import com.example.a8teammobileclient.service.RetrofitConfig;
 
 import java.util.Optional;
 
-import controller.user.UserInfo;
-import controller.user.UserSignIn;
+import com.example.a8teammobileclient.controller.user.UserSignIn;
 
 public class LoginFragment extends Fragment {
     private Button registerBtn, loginBtn;

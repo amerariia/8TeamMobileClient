@@ -1,4 +1,4 @@
-package controller.group;
+package com.example.a8teammobileclient.controller.group;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.a8teammobileclient.entity.Group;

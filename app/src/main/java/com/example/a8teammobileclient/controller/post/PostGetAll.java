@@ -1,4 +1,4 @@
-package controller.post;
+package com.example.a8teammobileclient.controller.post;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.a8teammobileclient.entity.Post;
