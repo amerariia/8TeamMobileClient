@@ -36,9 +36,9 @@ public class SharedPreferencesHelper {
 
     public void addUser(User newUser){
         User user = getUser();
-        if(!(user.getLogin().equals(newUser.getLogin()))){
-            sharedPreferences.edit().putString(LOGGED_USER, mGson.toJson(newUser, USER_TYPE)).apply();
-        }
+//        if(!(user.getLogin().equals(newUser.getLogin()))){
+//            sharedPreferences.edit().putString(LOGGED_USER, mGson.toJson(newUser, USER_TYPE)).apply();
+//        }
     }
 
     public void deleteUser(){
