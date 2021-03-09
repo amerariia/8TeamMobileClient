@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
+import com.example.a8teammobileclient.entity.Token;
 import com.example.a8teammobileclient.entity.User;
 import com.example.a8teammobileclient.ui.authentication.LoginFragment;
 
@@ -12,14 +13,14 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserSignIn implements Callback<String> {
+public class UserSignIn implements Callback<Token> {
     private final Fragment fragment;
-    public static String token = "";
+    public static Token token = Token.builder().token("").build();
     public UserSignIn(Fragment fragment){
         this.fragment = fragment;
     }
     @Override
-    public void onResponse(Call<String> call, Response<String> response) {
+    public void onResponse(Call<Token> call, Response<Token> response) {
         // TODO save token
         if(response.isSuccessful()){
             token = response.body();
@@ -30,7 +31,7 @@ public class UserSignIn implements Callback<String> {
     }
 
     @Override
-    public void onFailure(Call<String> call, Throwable t) {
-
+    public void onFailure(Call<Token> call, Throwable t) {
+        t.printStackTrace();
     }
 }

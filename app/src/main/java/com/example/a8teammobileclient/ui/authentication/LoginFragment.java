@@ -1,6 +1,5 @@
 package com.example.a8teammobileclient.ui.authentication;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -17,10 +16,9 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
 import com.example.a8teammobileclient.R;
+import com.example.a8teammobileclient.entity.Role;
 import com.example.a8teammobileclient.entity.User;
 import com.example.a8teammobileclient.service.RetrofitConfig;
-import com.example.a8teammobileclient.testData;
-import com.example.a8teammobileclient.ui.GroupsActivity;
 
 import java.util.Optional;
 
@@ -70,7 +68,7 @@ public class LoginFragment extends Fragment {
 
                     RetrofitConfig.get()
                             .getUserService().signIn(
-                                    User.builder().login(login).password(password).build()
+                                    User.builder().id("").firstName("").lastName("").role(Role.STUDENT).email(login).password(password).build()
                             ).enqueue(new UserSignIn(this));
 //                    if(testData.users.stream()
 //                            .anyMatch(user -> user.getLogin().equals(login) && user.getPassword().equals(password))){
@@ -87,12 +85,11 @@ public class LoginFragment extends Fragment {
     }
 
     public void loginSuccess(){
-        //((AuthenticationActivity) getActivity()).openGroupsActivity();
-        RetrofitConfig.get().getUserService().info().enqueue(new UserInfo(this));
+        ((AuthenticationActivity) getActivity()).openGroupsActivity();
     }
 
     public void userInfo(User user){
-        Toast.makeText(getContext(), user.getName(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), user.getFirstName(), Toast.LENGTH_SHORT).show();
     }
 
 }

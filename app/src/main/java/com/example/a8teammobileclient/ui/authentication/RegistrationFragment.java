@@ -82,9 +82,9 @@ public class RegistrationFragment extends Fragment {
                         errorTV.setText(e.getMessage());
                     }
                     User user = User.builder()
-                            .login(loginET.getText().toString())
+                            //.login(loginET.getText().toString())
                             .email(emailET.getText().toString())
-                            .name(nameET.getText().toString())
+                            .firstName(nameET.getText().toString())
                             .password(passwordET.getText().toString())
                             .build();
                     testData.users.add(user);
