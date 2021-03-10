@@ -14,14 +14,14 @@ public interface FormService {
     Call<Form> get(@Path("id") Integer id);
 
     @DELETE("Form/{id}")
-    Call<ResponseBody> delete(@Path("id") Integer id);
+    Call<ResponseModel> delete(@Path("id") Integer id);
 
     @PUT("Form")
     Call<ResponseModel> modify(@Body Form form);
 
     @GET("Form")
-    Call<List<Form>> get();
+    Call<List<Form>> getAll(@Query("userId") String userId);
 
     @POST("Form")
-    Call<ResponseModel> create(@Body Form form);
+    Call<ResponseModel> create(@Body Form form, @Header("Authorization") String token);
 }

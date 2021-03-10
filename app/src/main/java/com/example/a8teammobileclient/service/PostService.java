@@ -14,7 +14,7 @@ public interface PostService {
     Call<ResponseModel> create(@Body Post post);
 
     @GET("Post")
-    Call<List<Post>> get();
+    Call<List<Post>> getAll(@Query("groupId") Integer groupId);
 
     @GET("Post/{id}")
     Call<Post> get(@Path("id") Integer id);

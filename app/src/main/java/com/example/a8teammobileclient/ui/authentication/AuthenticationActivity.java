@@ -19,12 +19,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.a8teammobileclient.R;
+import com.example.a8teammobileclient.entity.Token;
 import com.example.a8teammobileclient.entity.User;
+import com.example.a8teammobileclient.service.RetrofitConfig;
 import com.example.a8teammobileclient.testData;
 import com.example.a8teammobileclient.ui.GroupsActivity;
 
 import java.util.List;
 import java.util.ResourceBundle;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AuthenticationActivity extends AppCompatActivity {
     @Override
@@ -37,15 +43,27 @@ public class AuthenticationActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-/*        SharedPreferencesHelper sharedPreferencesHelper = SharedPreferencesHelper.getInstance(this);
+        SharedPreferencesHelper sharedPreferencesHelper = SharedPreferencesHelper.getInstance(this);
         User user = sharedPreferencesHelper.getUser();
-        if(testData.users.stream()
-                .anyMatch(us -> us.getLogin().equals(user.getLogin()) && us.getPassword().equals(user.getPassword()))){
-            openGroupsActivity();
-        }
-        else{*/
-            setLoginFragment();
-//        }
+        RetrofitConfig.get().getUserService().signIn(user).enqueue(new Callback<Token>() {
+            @Override
+            public void onResponse(Call<Token> call, Response<Token> response) {
+                if(response.isSuccessful()){
+                    RetrofitConfig.trySetToken(response.body());
+                    openGroupsActivity();
+                }else{
+                    setLoginFragment();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Token> call, Throwable t) {
+                t.printStackTrace();
+                setLoginFragment();
+            }
+        });
+
+        setLoginFragment();
     }
 
     @Override

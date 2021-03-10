@@ -1,5 +1,7 @@
 package com.example.a8teammobileclient.service;
 
+import com.example.a8teammobileclient.entity.Token;
+
 import java.io.IOException;
 
 import controller.user.UserSignIn;
@@ -15,11 +17,18 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitConfig {
     private static final String BASE_URL = "https://grouper-8team-api.herokuapp.com/api/";
     private static RetrofitConfig config;
+    private static Token TOKEN = Token.builder().token("").build();
 
     private FormService formService;
     private GroupService groupService;
     private PostService postService;
     private UserService userService;
+
+    public static void trySetToken(Token token){
+        if(TOKEN.getToken().equals("")){
+            TOKEN = token;
+        }
+    }
 
     public static RetrofitConfig get(){
         if(config == null){
@@ -30,14 +39,11 @@ public class RetrofitConfig {
 
     private RetrofitConfig(){
         Retrofit retrofit = new Retrofit.Builder()
-                .client(new OkHttpClient.Builder().addInterceptor(new Interceptor() {
-                    @Override
-                    public Response intercept(Interceptor.Chain chain) throws IOException {
-                        Request newRequest  = chain.request().newBuilder()
-                                .addHeader("Authorization", "Bearer " + UserSignIn.token.getToken())
-                                .build();
-                        return chain.proceed(newRequest);
-                    }
+                .client(new OkHttpClient.Builder().addInterceptor(chain -> {
+                    Request newRequest  = chain.request().newBuilder()
+                            .addHeader("Authorization", "Bearer " + RetrofitConfig.TOKEN.getToken())
+                            .build();
+                    return chain.proceed(newRequest);
                 }).build())
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

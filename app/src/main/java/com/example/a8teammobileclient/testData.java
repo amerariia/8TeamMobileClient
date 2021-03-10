@@ -9,8 +9,8 @@ import java.util.List;
 
 public class testData {
     public static List<User> users = new ArrayList<User>(){{
-       add(User.builder().name("studentFN studentSN").role(Role.STUDENT).login("student").password("student").email("student@student.com").build());
-       add(User.builder().name("teacherFN teacherSN").role(Role.STUDENT).login("teacher").password("teacher").email("teacher@teacher.com").build());
+       add(User.builder().firstName("studentFN studentSN").role(Role.STUDENT).email("student").password("student").email("student@student.com").build());
+       add(User.builder().firstName("teacherFN teacherSN").role(Role.STUDENT).email("teacher").password("teacher").email("teacher@teacher.com").build());
     }};
 
     public static List<Group> groups = new ArrayList<Group>(){{

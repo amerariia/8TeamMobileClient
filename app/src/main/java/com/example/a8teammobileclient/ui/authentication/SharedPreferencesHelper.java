@@ -31,17 +31,21 @@ public class SharedPreferencesHelper {
     }
 
     public User getUser(){
-        return mGson.fromJson(sharedPreferences.getString(LOGGED_USER, LOGGED_USER), USER_TYPE);
+        String user = sharedPreferences.getString(LOGGED_USER, LOGGED_USER);
+        if (user.equals(LOGGED_USER)) {
+            return null;
+        }
+        return mGson.fromJson(sharedPreferences.getString(LOGGED_USER, LOGGED_USER), User.class);
     }
 
     public void addUser(User newUser){
         User user = getUser();
-//        if(!(user.getLogin().equals(newUser.getLogin()))){
-//            sharedPreferences.edit().putString(LOGGED_USER, mGson.toJson(newUser, USER_TYPE)).apply();
-//        }
+        if(user != null && !(user.getEmail().equals(newUser.getEmail()))){
+            sharedPreferences.edit().putString(LOGGED_USER, mGson.toJson(newUser, USER_TYPE)).apply();
+        }
     }
 
     public void deleteUser(){
-        sharedPreferences.edit().remove(LOGGED_USER);
+        sharedPreferences.edit().remove(LOGGED_USER).apply();
     }
 }

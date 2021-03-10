@@ -23,13 +23,30 @@ import com.example.a8teammobileclient.ui.authentication.SharedPreferencesHelper;
 import java.util.List;
 
 import controller.group.GroupGetAll;
+import controller.user.UserInfo;
+import controller.user.UserSignIn;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class GroupsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_groups);
-        RetrofitConfig.get().getGroupService().get().enqueue(new GroupGetAll(this));
+        RetrofitConfig.get().getGroupService().getAll(UserInfo.id).enqueue(new Callback<List<Group>>() {
+            @Override
+            public void onResponse(Call<List<Group>> call, Response<List<Group>> response) {
+                if(response.isSuccessful()){
+                    addGroupsToActivity(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Group>> call, Throwable t) {
+
+            }
+        });
         //addGroupsToActivity(loadGroups());
 
 //        Toolbar toolbar = findViewById(R.id.toolbar);

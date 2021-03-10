@@ -11,7 +11,7 @@ import java.util.List;
 
 public interface GroupService {
     @GET("Group")
-    Call<List<Group>> get();
+    Call<List<Group>> getAll(@Query("userId") String id);
 
     @POST("Group")
     Call<ResponseModel> create(@Body Group group);
