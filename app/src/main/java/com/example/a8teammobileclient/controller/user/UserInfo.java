@@ -1,6 +1,5 @@
-package controller.user;
+package com.example.a8teammobileclient.controller.user;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.a8teammobileclient.entity.User;

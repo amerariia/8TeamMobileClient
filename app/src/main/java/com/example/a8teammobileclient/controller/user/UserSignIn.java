@@ -1,14 +1,10 @@
-package controller.user;
+package com.example.a8teammobileclient.controller.user;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import com.example.a8teammobileclient.entity.Token;
-import com.example.a8teammobileclient.entity.User;
 import com.example.a8teammobileclient.ui.authentication.LoginFragment;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -4,7 +4,7 @@ import com.example.a8teammobileclient.entity.Token;
 
 import java.io.IOException;
 
-import controller.user.UserSignIn;
+import com.example.a8teammobileclient.controller.user.UserSignIn;
 import lombok.Getter;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;

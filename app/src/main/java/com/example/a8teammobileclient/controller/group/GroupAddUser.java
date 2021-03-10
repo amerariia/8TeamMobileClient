@@ -1,17 +1,15 @@
-package controller.post;
+package com.example.a8teammobileclient.controller.group;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.a8teammobileclient.entity.ResponseModel;
 
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PostAddComment implements Callback<ResponseModel> {
+public class GroupAddUser implements Callback<ResponseModel> {
     private final AppCompatActivity activity;
-    public PostAddComment(AppCompatActivity activity){
+    public GroupAddUser(AppCompatActivity activity){
         this.activity = activity;
     }
     @Override
