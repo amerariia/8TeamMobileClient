@@ -25,9 +25,7 @@ public class RetrofitConfig {
     private UserService userService;
 
     public static void trySetToken(Token token){
-        if(TOKEN.getToken().equals("")){
-            TOKEN = token;
-        }
+        TOKEN = token;
     }
 
     public static RetrofitConfig get(){

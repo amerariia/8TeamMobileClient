@@ -28,6 +28,9 @@ public interface GroupService {
     @POST("Group/{groupId}/add-user")
     Call<ResponseModel> addUser(@Path("groupId") Integer groupId, @Query("userId") Integer userId);
 
+    @POST("Group/add-with-identificator")
+    Call<Group> findGroup(@Body String identifier);
+
     @POST("Group/{groupId}/add-links")
     Call<ResponseBody> addLinks(@Path("groupId") Integer id, @Body String link);
 }
