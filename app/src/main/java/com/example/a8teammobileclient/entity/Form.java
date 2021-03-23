@@ -24,4 +24,8 @@ public class Form {
     @SerializedName("user")
     @Expose
     User user;
+
+    @SerializedName("postId")
+    @Expose
+    Integer postId;
 }

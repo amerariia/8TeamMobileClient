@@ -20,4 +20,8 @@ public class Comment {
     @SerializedName("sender")
     @Expose
     User sender;
+
+    @SerializedName("postId")
+    @Expose
+    Integer postId;
 }

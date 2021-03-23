@@ -1,5 +1,7 @@
 package com.example.a8teammobileclient.entity;
 
+import android.os.Parcelable;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -21,6 +23,10 @@ public class Group {
     @Expose
     String name;
 
+    @SerializedName("identificator")
+    @Expose
+    String identificator;
+
     @SerializedName("childGroups")
     @Expose
     List<Group> childGroups;
@@ -33,7 +39,15 @@ public class Group {
     @Expose
     List<Post> tasks;
 
-    @SerializedName("usefulLinks")
+    @SerializedName("description")
     @Expose
-    List<String> usefulLinks;
+    String description;
+
+    @SerializedName("usefulContent")
+    @Expose
+    String usefulContent;
+
+    @SerializedName("parentGroupId")
+    @Expose
+    Integer parentGroupId;
 }
