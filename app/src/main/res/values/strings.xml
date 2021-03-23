@@ -7,4 +7,17 @@
     <string name="register">Реєстрація</string>
     <string name="enter">Увійти</string>
     <string name="profile">Профіль</string>
+    <string name="addComment">Додати коментар</string>
+    <string name="send">Відправити</string>
+    <string name="create">Нова група</string>
+    <string name="modifyUsers">Змінити учасників</string>
+    <string name="modifyPosts">Змінити пости</string>
+    <string name="modifyLinks">Змынити посилання</string>
+    <string name="modifyGroup">Змінити опис</string>
+    <string name="links">Посилання</string>
+    <string name="addPost">Додати пост</string>
+    <string name="find">Знайти групу</string>
+    <string name="search">Пошук</string>
+    <string name="identificator">ідентифікатор групи</string>
+    <string name="deleteGroup">Видалити групу</string>
 </resources>
