@@ -18,6 +18,12 @@
         </activity>
         <activity android:name=".ui.GroupsActivity"/>
         <activity android:name=".ui.ProfileActivity"/>
+        <activity android:name=".ui.GroupActivity"/>
+        <activity android:name=".ui.PostActivity"/>
+        <activity android:name=".ui.teachers.EditGroupActivity"/>
+        <activity android:name=".ui.teachers.EditPostInfoActivity"/>
+        <activity android:name=".ui.InfoGroupActivity"/>
+        <activity android:name=".ui.FindGroupActivity"/>
     </application>
 
 </manifest>
