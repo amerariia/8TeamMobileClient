@@ -22,7 +22,6 @@ import com.example.a8teammobileclient.R;
 import com.example.a8teammobileclient.entity.Token;
 import com.example.a8teammobileclient.entity.User;
 import com.example.a8teammobileclient.service.RetrofitConfig;
-import com.example.a8teammobileclient.testData;
 import com.example.a8teammobileclient.ui.GroupsActivity;
 
 import java.util.List;
@@ -44,26 +43,29 @@ public class AuthenticationActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         SharedPreferencesHelper sharedPreferencesHelper = SharedPreferencesHelper.getInstance(this);
-        User user = sharedPreferencesHelper.getUser();
-        RetrofitConfig.get().getUserService().signIn(user).enqueue(new Callback<Token>() {
-            @Override
-            public void onResponse(Call<Token> call, Response<Token> response) {
-                if(response.isSuccessful()){
-                    RetrofitConfig.trySetToken(response.body());
-                    openGroupsActivity();
-                }else{
+        if(sharedPreferencesHelper.getUser().isPresent()) {
+
+            User user = sharedPreferencesHelper.getUser().get();
+            RetrofitConfig.get().getUserService().signIn(user).enqueue(new Callback<Token>() {
+                @Override
+                public void onResponse(Call<Token> call, Response<Token> response) {
+                    if(response.isSuccessful()){
+                        RetrofitConfig.trySetToken(response.body());
+                        openGroupsActivity();
+                    }else{
+                        setLoginFragment();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Token> call, Throwable t) {
+                    t.printStackTrace();
                     setLoginFragment();
                 }
-            }
-
-            @Override
-            public void onFailure(Call<Token> call, Throwable t) {
-                t.printStackTrace();
-                setLoginFragment();
-            }
-        });
-
-        setLoginFragment();
+            });
+        }else{
+            setLoginFragment();
+        }
     }
 
     @Override
@@ -88,7 +90,7 @@ public class AuthenticationActivity extends AppCompatActivity {
 
     public void openGroupsActivity(){
 
-        Intent intent = new Intent(this, GroupsActivity.class);
+        Intent intent = new Intent(getApplicationContext(), GroupsActivity.class);
         startActivity(intent);
     }
 }

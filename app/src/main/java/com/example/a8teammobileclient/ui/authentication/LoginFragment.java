@@ -23,8 +23,6 @@ import com.example.a8teammobileclient.service.RetrofitConfig;
 
 import java.util.Optional;
 
-import controller.user.UserInfo;
-import controller.user.UserSignIn;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -72,14 +70,14 @@ public class LoginFragment extends Fragment {
 
                     RetrofitConfig.get()
                             .getUserService().signIn(
-                                    User.builder().id("").firstName("").lastName("").role(Role.STUDENT).email(login).password(password).build()
+                                    User.builder().id("").firstName("").lastName("").role(Role.student).email(login).password(password).build()
                             ).enqueue(new Callback<Token>() {
                         @Override
                         public void onResponse(Call<Token> call, Response<Token> response) {
                             // TODO save token
                             if(response.isSuccessful()){
                                 RetrofitConfig.trySetToken(response.body());
-                                loginSuccess();
+                                loginSuccess(password);
                             }else{
                                 String message = response.message();
                             }
@@ -104,12 +102,14 @@ public class LoginFragment extends Fragment {
         // buttons, views initialization
     }
 
-    public void loginSuccess(){
+    public void loginSuccess(String password){
         RetrofitConfig.get().getUserService().info().enqueue(new Callback<User>() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful()){
                     User user = response.body();
+                    user.setPassword(password);
                     SharedPreferencesHelper.getInstance(getContext()).addUser(user);
                     ((AuthenticationActivity) getActivity()).openGroupsActivity();
                 }

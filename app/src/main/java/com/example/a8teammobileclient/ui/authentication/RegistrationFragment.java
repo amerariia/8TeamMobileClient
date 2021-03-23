@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment;
 
 import com.example.a8teammobileclient.R;
 import com.example.a8teammobileclient.entity.User;
-import com.example.a8teammobileclient.testData;
 import com.example.a8teammobileclient.validator.AuthenticationValidator;
 
 import java.util.Optional;
@@ -87,7 +86,6 @@ public class RegistrationFragment extends Fragment {
                             .firstName(nameET.getText().toString())
                             .password(passwordET.getText().toString())
                             .build();
-                    testData.users.add(user);
                 }
         );
 

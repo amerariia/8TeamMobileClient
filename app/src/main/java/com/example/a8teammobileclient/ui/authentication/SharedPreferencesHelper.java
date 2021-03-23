@@ -2,12 +2,16 @@ package com.example.a8teammobileclient.ui.authentication;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.a8teammobileclient.entity.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.Optional;
 
 public class SharedPreferencesHelper {
 
@@ -17,6 +21,7 @@ public class SharedPreferencesHelper {
 
     private SharedPreferences sharedPreferences;
     private static SharedPreferencesHelper sharedPreferencesHelper;
+    private User currentUser;
     private Gson mGson = new Gson();
 
     private SharedPreferencesHelper(Context context){
@@ -30,22 +35,35 @@ public class SharedPreferencesHelper {
         return sharedPreferencesHelper;
     }
 
-    public User getUser(){
-        String user = sharedPreferences.getString(LOGGED_USER, LOGGED_USER);
-        if (user.equals(LOGGED_USER)) {
-            return null;
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Optional<User> getCurrentUser(){
+        if(currentUser == null){
+            return getUser();
         }
-        return mGson.fromJson(sharedPreferences.getString(LOGGED_USER, LOGGED_USER), User.class);
+
+        return Optional.of(currentUser);
     }
 
-    public void addUser(User newUser){
-        User user = getUser();
-        if(user != null && !(user.getEmail().equals(newUser.getEmail()))){
-            sharedPreferences.edit().putString(LOGGED_USER, mGson.toJson(newUser, USER_TYPE)).apply();
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public Optional<User> getUser(){
+        String user = sharedPreferences.getString(LOGGED_USER, LOGGED_USER);
+        if (user.equals(LOGGED_USER)) {
+            return Optional.empty();
         }
+        currentUser = mGson.fromJson(sharedPreferences.getString(LOGGED_USER, LOGGED_USER), User.class);
+        return Optional.ofNullable(currentUser);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void addUser(User newUser){
+
+        sharedPreferences.edit().putString(LOGGED_USER, mGson.toJson(newUser, USER_TYPE)).apply();
+        currentUser = newUser;
+
     }
 
     public void deleteUser(){
         sharedPreferences.edit().remove(LOGGED_USER).apply();
+        currentUser = null;
     }
 }
