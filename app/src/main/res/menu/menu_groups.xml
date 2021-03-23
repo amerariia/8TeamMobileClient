@@ -5,6 +5,12 @@
         android:id="@+id/itemProfile"
         android:title="@string/profile" />
     <item
+        android:id="@+id/itemCreate"
+        android:title="@string/create" />
+    <item
+        android:id="@+id/itemFindGroup"
+        android:title="@string/find" />
+    <item
         android:id="@+id/itemLogout"
         android:title="Вихід" />
 </menu>

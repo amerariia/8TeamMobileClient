@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemProfile"
+        android:title="@string/profile" />
+    <item
+        android:id="@+id/itemModifyGroup"
+        android:title="@string/modifyGroup" />
+    <item
+        android:id="@+id/itemDeleteGroup"
+        android:title="@string/deleteGroup" />
+    <item
+        android:id="@+id/itemAddPost"
+        android:title="@string/addPost" />
+    <item
+        android:id="@+id/itemLogout"
+        android:title="Вихід" />
+</menu>
