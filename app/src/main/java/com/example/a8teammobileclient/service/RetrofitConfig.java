@@ -4,7 +4,7 @@ import com.example.a8teammobileclient.entity.Token;
 
 import java.io.IOException;
 
-import com.example.a8teammobileclient.controller.user.UserSignIn;
+import com.example.a8teammobileclient.entity.Group;
 import lombok.Getter;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -51,6 +51,5 @@ public class RetrofitConfig {
         groupService = retrofit.create(GroupService.class);
         postService = retrofit.create(PostService.class);
         userService = retrofit.create(UserService.class);
-
     }
 }

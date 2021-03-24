@@ -1,5 +1,6 @@
 package com.example.a8teammobileclient.service;
 
+import com.example.a8teammobileclient.entity.Comment;
 import com.example.a8teammobileclient.entity.Post;
 import com.example.a8teammobileclient.entity.ResponseModel;
 
@@ -26,5 +27,5 @@ public interface PostService {
     Call<ResponseModel> modify(@Body Post post);
 
     @POST("Post/add-comment")
-    Call<ResponseModel> addComment(@Body Post post);
+    Call<ResponseModel> addComment(@Body Comment comment);
 }

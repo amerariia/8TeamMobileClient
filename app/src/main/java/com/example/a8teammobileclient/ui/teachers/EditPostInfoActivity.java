@@ -9,6 +9,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a8teammobileclient.R;
+import com.example.a8teammobileclient.entity.Comment;
 import com.example.a8teammobileclient.entity.Post;
 import com.example.a8teammobileclient.entity.ResponseModel;
 import com.example.a8teammobileclient.service.RetrofitConfig;
